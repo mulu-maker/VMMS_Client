@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VMMS_Client.LoadingPopup"
+             IsVisible="{Binding IsLoading}">
+    <Grid BackgroundColor="Black"
+          Opacity="0.6"
+          VerticalOptions="FillAndExpand"
+          HorizontalOptions="FillAndExpand">
+        <Frame VerticalOptions="Center"
+               HorizontalOptions="Center"
+               Padding="30"
+               BackgroundColor="White"
+               CornerRadius="10">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <ActivityIndicator IsRunning="True" Color="Blue" />
+                <Label Text="Loading..." HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,0,0"/>
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentView>

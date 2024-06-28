@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VMMS_Client"
+             x:Class="VMMS_Client.RepairBillPage"
+             Title="维修单">
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout Padding="20">
+                <Label
+                    Text="车牌号"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Grid VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Entry
+                        x:Name="LicensePlateEntry"
+                        Placeholder="输入车牌号"
+                        Text="{Binding Obj.LicensePlate}"
+                        VerticalOptions="Center"
+                        Grid.Column="0"
+                        HorizontalOptions="FillAndExpand" 
+                        Completed="OnLicensePlateCompleted" />
+                    <Button
+                        Text="拍照"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End"
+                        Grid.Column="2"
+                        Clicked="OnTakePhotoButtonClicked" />
+                    <Button
+                        Text="确认"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End"
+                        Grid.Column="1"
+                        Clicked="OnConfirmButtonClicked" />
+                </Grid>
+                <Label
+                    Text="车架号"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Label
+                    x:Name="VinLabel"
+                    Text="{Binding Obj.VIN}"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand" />
+                <Label
+                    Text="车主"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Label
+                    x:Name="CustomerNameLabel"
+                    Text="{Binding Obj.CustomerName}"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand" />
+                <Label
+                    Text="送修人"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Entry
+                    x:Name="SendNamePlateLabel"
+                    Placeholder="输入送修人名字"
+                    Text="{Binding Obj.SendName}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand" />
+                <Label
+                    Text="手机号"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Entry
+                    x:Name="MobilePhonePlateLabel"
+                    Placeholder="输入送修人手机号"
+                    Text="{Binding Obj.MobilePhone}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand" />
+                <Label
+                    Text="车辆里程(*)"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Entry
+                    x:Name="CarMileageLabel"
+                    Placeholder=" "
+                    Text="{Binding Obj.CarMileage}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand" />
+                <Label
+                    Text="员工(*)"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Picker
+                    x:Name="UserPicker"
+                    Title="选择员工"
+                    ItemsSource="{Binding Users}"
+                    ItemDisplayBinding="{Binding UserName}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand" />
+                <Label
+                    Text="维修项目(*)"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Picker
+                    x:Name="CarItemPicker"
+                    Title="选择维修项目"
+                    ItemsSource="{Binding CarItems}"
+                    ItemDisplayBinding="{Binding ItemName}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand" />
+                <Label
+                    Text="维修内容"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Editor x:Name="txtItemContent"
+                        Text="{Binding Obj.ItemContent}"
+                        HeightRequest="100"
+                        Margin="10"
+                        BackgroundColor="LightGray" />
+                <Grid VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Text="保存"
+                        Clicked="OnSaveButtonClicked"
+                        VerticalOptions="End"
+                        HorizontalOptions="End"
+                        Margin="0,0,10,0"
+                        Grid.Column="0" />
+                    <Button
+                        Text="清空"
+                        Clicked="OnClearButtonClicked"
+                        VerticalOptions="End"
+                        HorizontalOptions="Start"
+                        Margin="10,0,0,0"
+                        Grid.Column="1"  />
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
+        <local:LoadingPopup IsVisible="{Binding IsLoading}" />
+    </Grid>
+</ContentPage>

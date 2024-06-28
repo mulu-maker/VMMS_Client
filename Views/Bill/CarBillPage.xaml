@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VMMS_Client"
+             x:Class="VMMS_Client.CarBillPage"
+             Title="创建车辆资料">
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout Padding="20">
+                <Label
+                    Text="VIN"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Grid VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Entry
+                        x:Name="VINEntry"
+                        Placeholder="输入VIN"
+                        Text="{Binding Car.VIN}"
+                        VerticalOptions="Center"
+                        Grid.Column="0"
+                        HorizontalOptions="FillAndExpand"  />
+                    <Button
+                        Text="拍照"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End"
+                        Grid.Column="1"
+                        Clicked="VINRecognitionButtonClicked" />
+                </Grid>
+                <Label
+                   Text="车牌号"
+                   FontSize="Medium"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start" />
+                <Grid VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Entry
+                        x:Name="LicensePlateEntry"
+                        Placeholder="输入车牌号"
+                        Text="{Binding Car.LicensePlate}"
+                        VerticalOptions="Center"
+                        Grid.Column="0"
+                        HorizontalOptions="FillAndExpand"  />
+                    <Button
+                        Text="拍照"
+                        VerticalOptions="Center"
+                        HorizontalOptions="End"
+                        Grid.Column="1"
+                        Clicked="LicensePlateRecognitionButtonClicked" />
+                </Grid>
+                <Label
+                      Text="总里程"
+                      FontSize="Medium"
+                      VerticalOptions="Center"
+                      HorizontalOptions="Start" />
+                <Entry
+                    x:Name="TotalMileageEntry"
+                    Placeholder="输入车牌号"
+                    Text="{Binding Car.TotalMileage}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"  />
+                <Label
+                    Text="车型"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Picker
+                    x:Name="ModelNamePicker"
+                    Title="选择车型"
+                    ItemsSource="{Binding ModelNames}"
+                    ItemDisplayBinding="{Binding ModelName}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand" />
+                <Label
+                     Text="发动机"
+                     FontSize="Medium"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Start" />
+                <Entry
+                   x:Name="EngineModelEntry"
+                   Placeholder="输入发动机型号"
+                   Text="{Binding Car.EngineModel}"
+                   VerticalOptions="Center"
+                   HorizontalOptions="FillAndExpand"  />
+                <Label
+                     Text="排量"
+                     FontSize="Medium"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Start" />
+                <Entry
+                   x:Name="EngineCapacityEntry"
+                   Placeholder="输入发动机型号"
+                   Text="{Binding Car.EngineCapacity}"
+                   VerticalOptions="Center"
+                   HorizontalOptions="FillAndExpand"  />
+                <Label
+                    Text="车身颜色"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Entry
+                  x:Name="CarColorEntry"
+                  Placeholder="输入发动机型号"
+                  Text="{Binding Car.CarColor}"
+                  VerticalOptions="Center"
+                  HorizontalOptions="FillAndExpand"  />
+                <Label
+                    Text="生产日期"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <DatePicker
+                  x:Name="ManufactureDatePicker"
+                  Date="{Binding Car.ManufactureDate}"
+                  VerticalOptions="Center"
+                  HorizontalOptions="FillAndExpand" />
+                <Label
+                    Text="车主"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Entry
+                  x:Name="CustomerNameEntry"
+                  Placeholder="输入车主姓名"
+                  Text="{Binding Car.CustomerName}"
+                  VerticalOptions="Center"
+                  HorizontalOptions="FillAndExpand"  />
+                <Label
+                    Text="手机号"
+                    FontSize="Medium"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Entry
+                  x:Name="MobilePhoneEntry"
+                  Placeholder="输入手机号"
+                  Text="{Binding Car.MobilePhone}"
+                  VerticalOptions="Center"
+                  HorizontalOptions="FillAndExpand"  />
+                <Grid VerticalOptions="End" HorizontalOptions="FillAndExpand" Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Text="保存"
+                        Clicked="OnSaveButtonClicked"
+                        VerticalOptions="End"
+                        HorizontalOptions="End"
+                        Margin="0,0,10,0"
+                        Grid.Column="0" />
+                    <Button
+                        Text="取消"
+                        Clicked="OnCancelButtonClicked"
+                        VerticalOptions="End"
+                        HorizontalOptions="Start"
+                        Margin="10,0,0,0"
+                        Grid.Column="1" />
+                </Grid>
+            </VerticalStackLayout>
+        </ScrollView>
+        <local:LoadingPopup IsVisible="{Binding IsLoading}" />
+    </Grid>
+</ContentPage>

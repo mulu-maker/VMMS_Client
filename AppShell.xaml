@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="VMMS_Client.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:VMMS_Client"
+    Shell.FlyoutBehavior="Disabled"
+    Title="VMMS_Client">
+
+    <ShellItem>
+        <ShellContent
+            Title="主页"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage"
+            Icon="aichegujiabeifen5.svg"/>
+        
+        <ShellContent
+            Title="车辆资料"
+            ContentTemplate="{DataTemplate local:CarBillPage}"
+            Route="CarBillPage"
+            Icon="aichegujiabeifen12.svg"/>
+        <ShellContent
+            Title="维修单"
+            ContentTemplate="{DataTemplate local:RepairBillPage}"
+            Route="RepairBillPage"
+            Icon="weixiu.svg"/>
+
+        <ShellContent
+            Title="设置"
+            ContentTemplate="{DataTemplate local:SettingsPage}"
+            Route="SettingsPage"
+            Icon="zhuanchezhuanyongbeifen.svg"/>
+    </ShellItem>
+
+</Shell>
