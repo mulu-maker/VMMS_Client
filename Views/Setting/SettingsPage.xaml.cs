@@ -34,6 +34,7 @@ namespace VMMS_Client
         /// <param name="e"></param>
         private async void OnTestButtonClicked(object sender, EventArgs e)
         {
+            IsLoading(true);
             Stopwatch stopwatch = Stopwatch.StartNew();
             var timeoutTask = Task.Delay(DalPrompt.Delayed);
             // 启动数据加载任务
@@ -43,6 +44,7 @@ namespace VMMS_Client
             var completedTask = await Task.WhenAny(loadUsersTask, timeoutTask);
             stopwatch.Stop();
             long elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
+            IsLoading();
             // 如果完成的任务是超时任务，则显示超时警告
             if (completedTask == timeoutTask)
             {
@@ -61,8 +63,14 @@ namespace VMMS_Client
                 }
             }
 
+        }
+
+        public void IsLoading(bool IsLoading = false)
+        {
+            IsLoadingLoadingPopup.IsVisible = IsLoading;
 
         }
+
     }
 
     public class SettingsViewModel : BindableObject

@@ -10,6 +10,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
+		<AndroidPackageFormat>apk</AndroidPackageFormat>
+
 		<!-- Display name -->
 		<ApplicationTitle>VMMS_Client</ApplicationTitle>
 

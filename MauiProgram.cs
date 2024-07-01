@@ -19,6 +19,8 @@ namespace VMMS_Client
             // 注册图像资源
             builder.ConfigureImageSources();
 
+            //builder.Services.AddSingleton<OcrLite>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

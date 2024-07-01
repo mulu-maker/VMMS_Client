@@ -2,9 +2,11 @@
 {
     public partial class App : Application
     {
+        private string PageName = "启动";
         public App()
         {
             InitializeComponent();
+
 
             MainPage = new AppShell();
             
